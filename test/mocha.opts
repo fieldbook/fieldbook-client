@@ -1,0 +1,4 @@
+--require test/init.js
+--reporter spec
+--slow 1000
+-t 3000

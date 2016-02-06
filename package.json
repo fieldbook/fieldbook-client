@@ -1,0 +1,23 @@
+{
+  "name": "fieldbook-client",
+  "version": "1.0.0",
+  "description": "A simple node client for Fieldbook.com's API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fieldbook/fieldbook-client.git"
+  },
+  "keywords": [
+    "api",
+    "fieldbook"
+  ],
+  "author": "Ben Bernard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fieldbook/fieldbook-client/issues"
+  },
+  "homepage": "https://github.com/fieldbook/fieldbook-client#readme"
+}
