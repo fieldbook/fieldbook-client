@@ -34,6 +34,22 @@ _.extend(Client.prototype, {
       } else {
         return 'ok';
       }
+    }).fail(function (response) {
+      if (response instanceof Error) throw response;
+
+      var message = 'Unknown error: ' + (response.body || '');
+      if (response.headers['content-type'] === 'application/json') {
+        try {
+          var data = JSON.parse(response.body);
+          if (data && data.message) message = data.message
+        } catch (e) {
+          // Do nothing
+        }
+      }
+
+      var err = new Error(message);
+      err.response = response;
+      throw err;
     });
   },
 

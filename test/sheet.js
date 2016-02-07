@@ -42,4 +42,16 @@ describe('Sheets', function () {
       })
     }
   )
+
+  describe('when you have an error', function () {
+    helpers.testRequest(
+      'request a sheet that doesnt exist',
+      function () { return client.list('foo') },
+      function (call) {
+        it('should reject the promise', function () {
+          return expect(call.response).eventually.rejectedWith(/No such sheet/);
+        })
+      }
+    )
+  })
 })

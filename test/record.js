@@ -91,4 +91,14 @@ describe('Records', function () {
       })
     }
   )
+
+  helpers.testRequest(
+    'when you request a record and get an error',
+    function () { return client.show('people', 99) },
+    function (call) {
+      it('should throw an error', function () {
+        return expect(call.response).eventually.rejectedWith(/Record id not found/)
+      })
+    }
+  )
 });

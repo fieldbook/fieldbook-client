@@ -20,7 +20,9 @@ helpers.testRequest = function (name, createRequest, testFn) {
     var call = {};
     before(function () {
       call.response = createRequest();
-      return call.response;
+      return call.response.fail(function (err) {
+        // ignore errors here
+      });
     })
 
     testFn(call);
