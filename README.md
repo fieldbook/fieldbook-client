@@ -1,6 +1,6 @@
 # fieldbook-client
 
-A nodejs client for Fieldbook.com
+A node client for http://fieldbook.com
 
 ## Creating a client
 
