@@ -22,5 +22,16 @@
   // Globals
   "node": true, // include node global variables
   "globals": {
+    // Test globals
+    "chai": false,
+    "expect": false,
+    "client": false,
+    "helpers": true,
+    "_": true,
+    "before": true,
+    "after": true,
+    "describe": true,
+    "it": true,
+    "Q": false
   }
 }

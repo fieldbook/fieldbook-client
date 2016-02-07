@@ -1,0 +1,1509 @@
+{
+  "book": {
+    "title": "API Tests",
+    "webhookCount": 0,
+    "statsInfo": {
+      "dirty": true
+    },
+    "deletedIntegrations": [],
+    "integrations": [],
+    "deletedApiKeys": [],
+    "publicApiAccess": false,
+    "apiKeys": [],
+    "nextApiId": 1,
+    "hideVideoLink": false,
+    "template": {
+      "slug": "project-management"
+    },
+    "nextSheetTitleNumber": 4,
+    "deletedJoins": [],
+    "joins": [
+      {
+        "_id": "$_ObjectId_3",
+        "right": {
+          "sheetId": "$_ObjectId_4",
+          "fieldKey": "f4"
+        },
+        "left": {
+          "sheetId": "$_ObjectId_5",
+          "fieldKey": "f1"
+        }
+      },
+      {
+        "_id": "$_ObjectId_6",
+        "right": {
+          "sheetId": "$_ObjectId_5",
+          "fieldKey": "f5"
+        },
+        "left": {
+          "sheetId": "$_ObjectId_7",
+          "fieldKey": "f3"
+        }
+      }
+    ],
+    "sheets": [
+      {
+        "nameKey": "f0",
+        "description": "Enter one row here per individual task on a project. Tasks can also be entered on the page for the project they belong to. Use the links on the left to see different views on the task list.",
+        "_id": "$_ObjectId_5",
+        "nextNameNumber": 8,
+        "removedSubsheets": [],
+        "removedLinks": [],
+        "deletedSubsheets": [],
+        "subsheets": [
+          {
+            "_id": "$_ObjectId_8",
+            "field": {
+              "key": "f4"
+            },
+            "sheet": {
+              "_id": "$_ObjectId_4"
+            }
+          },
+          {
+            "_id": "$_ObjectId_9",
+            "field": {
+              "key": "f3"
+            },
+            "sheet": {
+              "_id": "$_ObjectId_7"
+            }
+          }
+        ],
+        "nameFieldMode": "single",
+        "nextShortId": 16,
+        "nextOrdinal": 130,
+        "deletedNavItems": [],
+        "navItems": [
+          {
+            "key": "n0",
+            "name": "By priority",
+            "description": "Tasks grouped by priority, from P1 to P5.",
+            "query": {
+              "powerBarTerms": [
+                {
+                  "cmd": "group",
+                  "arguments": [
+                    {
+                      "key": "f2"
+                    }
+                  ]
+                },
+                {
+                  "cmd": "sort",
+                  "arguments": [
+                    {
+                      "key": "f3"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "name": "By status",
+            "key": "n1",
+            "description": "Pipeline view of tasks grouped by status.",
+            "query": {
+              "powerBarTerms": [
+                {
+                  "arguments": [
+                    {
+                      "key": "f4"
+                    }
+                  ],
+                  "cmd": "group"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Outstanding work by owner",
+            "key": "n2",
+            "description": "Report on tasks not done, showing count and total hours by owner.",
+            "query": {
+              "powerBarTerms": [
+                {
+                  "cmd": "filter",
+                  "arguments": [
+                    {
+                      "op": "<>",
+                      "expr1": {
+                        "key": "f4"
+                      },
+                      "expr2": {
+                        "op": "\"",
+                        "val": "Done"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cmd": "group",
+                  "arguments": [
+                    {
+                      "key": "f5"
+                    }
+                  ]
+                },
+                {
+                  "cmd": "report",
+                  "arguments": [
+                    {
+                      "op": "fn",
+                      "name": "count",
+                      "arguments": []
+                    },
+                    {
+                      "op": "fn",
+                      "name": "sum",
+                      "arguments": [
+                        {
+                          "key": "f6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "deletedFields": [],
+        "fields": [
+          {
+            "key": "f0",
+            "name": "Summary",
+            "width": 328,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 1
+          },
+          {
+            "jobId": null,
+            "key": "f1",
+            "name": "Project",
+            "width": 167,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "linkedSheet": {
+              "_id": "$_ObjectId_4"
+            },
+            "enum": [],
+            "type": "join",
+            "nameNumber": 2
+          },
+          {
+            "key": "f2",
+            "name": "Priority",
+            "width": 91,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 3
+          },
+          {
+            "guid": "f5083dcb-65a8-43df-84a4-ee341d7f3a6b",
+            "key": "f4",
+            "name": "Status",
+            "width": 111,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [
+              "New",
+              "Working",
+              "Review",
+              "Testing",
+              "Done"
+            ],
+            "type": "enum",
+            "nameNumber": 4
+          },
+          {
+            "key": "f6",
+            "name": "Hours",
+            "width": 89,
+            "hidden": false,
+            "required": false,
+            "validation": "number",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 5
+          },
+          {
+            "key": "f3",
+            "name": "Due",
+            "width": 130,
+            "hidden": false,
+            "required": false,
+            "validation": "date",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 6
+          },
+          {
+            "jobId": null,
+            "key": "f5",
+            "name": "Owner",
+            "width": 156,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "join",
+            "nameNumber": 7
+          }
+        ],
+        "titleNumber": 2,
+        "title": "Tasks",
+        "creator": {
+          "_id": "$_ObjectId_2"
+        }
+      },
+      {
+        "nameKey": "f0",
+        "description": "Enter one line for each project. Click the project name to view all of its tasks.",
+        "_id": "$_ObjectId_4",
+        "nextNameNumber": 5,
+        "removedSubsheets": [],
+        "removedLinks": [],
+        "deletedSubsheets": [],
+        "subsheets": [
+          {
+            "_id": "$_ObjectId_10",
+            "field": {
+              "key": "f1"
+            },
+            "sheet": {
+              "_id": "$_ObjectId_5"
+            }
+          }
+        ],
+        "nameFieldMode": "single",
+        "nextShortId": 4,
+        "nextOrdinal": 27,
+        "deletedNavItems": [],
+        "navItems": [],
+        "deletedFields": [],
+        "fields": [
+          {
+            "key": "f0",
+            "name": "Code Name",
+            "width": 196,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 1
+          },
+          {
+            "key": "f1",
+            "name": "Goal",
+            "width": 296,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 2
+          },
+          {
+            "expression": {
+              "arguments": [
+                {
+                  "expr2": {
+                    "key": "f6"
+                  },
+                  "expr1": {
+                    "key": "f4"
+                  },
+                  "op": "."
+                }
+              ],
+              "name": "sum",
+              "op": "fn"
+            },
+            "key": "f3",
+            "name": "Total hours",
+            "width": 165,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "formula",
+            "nameNumber": 3
+          },
+          {
+            "jobId": null,
+            "key": "f4",
+            "name": "Tasks",
+            "width": 251,
+            "hidden": true,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "join",
+            "nameNumber": 4
+          }
+        ],
+        "titleNumber": 1,
+        "title": "Projects",
+        "creator": {
+          "_id": "$_ObjectId_2"
+        }
+      },
+      {
+        "nameKey": "f0",
+        "description": "Add one row here for each person on the team. Click a person's name to see all the tasks assigned to them.",
+        "_id": "$_ObjectId_7",
+        "nextNameNumber": 5,
+        "removedSubsheets": [],
+        "removedLinks": [],
+        "deletedSubsheets": [],
+        "subsheets": [
+          {
+            "_id": "$_ObjectId_11",
+            "field": {
+              "key": "f5"
+            },
+            "sheet": {
+              "_id": "$_ObjectId_5"
+            }
+          }
+        ],
+        "nameFieldMode": "single",
+        "nextShortId": 6,
+        "nextOrdinal": 26,
+        "deletedNavItems": [],
+        "navItems": [],
+        "deletedFields": [],
+        "fields": [
+          {
+            "key": "f0",
+            "name": "Name",
+            "width": 196,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 1
+          },
+          {
+            "key": "f1",
+            "name": "Role",
+            "width": 265,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 2
+          },
+          {
+            "key": "f2",
+            "name": "Phone",
+            "width": 199,
+            "hidden": false,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "enum": [],
+            "type": "generic",
+            "nameNumber": 3
+          },
+          {
+            "jobId": null,
+            "key": "f3",
+            "name": "Tasks",
+            "width": 304,
+            "hidden": true,
+            "required": false,
+            "validation": "generic",
+            "removedSubsheets": [],
+            "linkedSheet": {
+              "_id": "$_ObjectId_5"
+            },
+            "enum": [],
+            "type": "join",
+            "nameNumber": 4
+          }
+        ],
+        "titleNumber": 3,
+        "title": "People",
+        "creator": {
+          "_id": "$_ObjectId_2"
+        }
+      }
+    ]
+  },
+  "recordSets": [
+    [
+      {
+        "_id": "$_ObjectId_12",
+        "clientName": {
+          "type": "string",
+          "value": "Write interface design"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Write interface design"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P1"
+        },
+        "f3": {
+          "type": "date",
+          "value": "03/26/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Done"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 3
+        },
+        "ordinal": 6,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 1
+      },
+      {
+        "_id": "$_ObjectId_13",
+        "clientName": {
+          "type": "string",
+          "value": "Draft industry analysis"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Draft industry analysis"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P2"
+        },
+        "f3": {
+          "type": "date",
+          "value": "03/07/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Working"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 1
+        },
+        "ordinal": 23,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 2
+      },
+      {
+        "_id": "$_ObjectId_14",
+        "clientName": {
+          "type": "string",
+          "value": "Finalize next iteration of test plan"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Finalize next iteration of test plan"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P3"
+        },
+        "f3": {
+          "type": "date",
+          "value": "05/14/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Review"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 8
+        },
+        "ordinal": 25,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 3
+      },
+      {
+        "_id": "$_ObjectId_15",
+        "clientName": {
+          "type": "string",
+          "value": "Write alternative project budget"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Write alternative project budget"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P3"
+        },
+        "f3": {
+          "type": "date",
+          "value": "12/19/2014"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Working"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 5
+        },
+        "ordinal": 27,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 4
+      },
+      {
+        "_id": "$_ObjectId_16",
+        "clientName": {
+          "type": "string",
+          "value": "Deliver preliminary progress report"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Deliver preliminary progress report"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P2"
+        },
+        "f3": {
+          "type": "date",
+          "value": "01/16/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Done"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 3
+        },
+        "ordinal": 37,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 5
+      },
+      {
+        "_id": "$_ObjectId_17",
+        "clientName": {
+          "type": "string",
+          "value": "Create first version of progress report"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Create first version of progress report"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P3"
+        },
+        "f3": {
+          "type": "date",
+          "value": "01/14/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Review"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 2
+        },
+        "ordinal": 39,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 6
+      },
+      {
+        "_id": "$_ObjectId_18",
+        "clientName": {
+          "type": "string",
+          "value": "Finalize supplemental technical design"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Finalize supplemental technical design"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P1"
+        },
+        "f3": {
+          "type": "date",
+          "value": "08/07/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "New"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 5
+        },
+        "ordinal": 62,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 7
+      },
+      {
+        "_id": "$_ObjectId_19",
+        "clientName": {
+          "type": "string",
+          "value": "Finish initial industry analysis"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Finish initial industry analysis"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P4"
+        },
+        "f3": {
+          "type": "date",
+          "value": "11/17/2014"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Review"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 4
+        },
+        "ordinal": 63,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 8
+      },
+      {
+        "_id": "$_ObjectId_20",
+        "clientName": {
+          "type": "string",
+          "value": "Publish final interface design"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Publish final interface design"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P4"
+        },
+        "f3": {
+          "type": "date",
+          "value": "05/08/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Testing"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 9
+        },
+        "ordinal": 65,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 9
+      },
+      {
+        "_id": "$_ObjectId_21",
+        "clientName": {
+          "type": "string",
+          "value": "Publish industry analysis"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Publish industry analysis"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P2"
+        },
+        "f3": {
+          "type": "date",
+          "value": "08/26/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "New"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 5
+        },
+        "ordinal": 69,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 10
+      },
+      {
+        "_id": "$_ObjectId_22",
+        "clientName": {
+          "type": "string",
+          "value": "Write preliminary defect report"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Write preliminary defect report"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P4"
+        },
+        "f3": {
+          "type": "date",
+          "value": "02/08/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Review"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 6
+        },
+        "ordinal": 70,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 11
+      },
+      {
+        "_id": "$_ObjectId_23",
+        "clientName": {
+          "type": "string",
+          "value": "Deliver initial defect report"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Deliver initial defect report"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P5"
+        },
+        "f3": {
+          "type": "date",
+          "value": "09/29/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Done"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 10
+        },
+        "ordinal": 78,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 12
+      },
+      {
+        "_id": "$_ObjectId_24",
+        "clientName": {
+          "type": "string",
+          "value": "Finalize test plan"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Finalize test plan"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P4"
+        },
+        "f3": {
+          "type": "date",
+          "value": "08/10/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Testing"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 2
+        },
+        "ordinal": 79,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 13
+      },
+      {
+        "_id": "$_ObjectId_25",
+        "clientName": {
+          "type": "string",
+          "value": "Draft final interface design"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Draft final interface design"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P5"
+        },
+        "f3": {
+          "type": "date",
+          "value": "04/05/2015"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Done"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 12
+        },
+        "ordinal": 83,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 14
+      },
+      {
+        "_id": "$_ObjectId_26",
+        "clientName": {
+          "type": "string",
+          "value": "Review updated interface design"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Review updated interface design"
+        },
+        "f1": null,
+        "f2": {
+          "type": "string",
+          "value": "P3"
+        },
+        "f3": {
+          "type": "date",
+          "value": "12/03/2014"
+        },
+        "f4": {
+          "type": "string",
+          "value": "Working"
+        },
+        "f5": null,
+        "f6": {
+          "type": "numeric",
+          "value": 6
+        },
+        "ordinal": 84,
+        "sheetId": "$_ObjectId_5",
+        "shortId": 15
+      }
+    ],
+    [
+      {
+        "_id": "$_ObjectId_27",
+        "f0": {
+          "type": "string",
+          "value": "Project Cobalt"
+        },
+        "f1": {
+          "type": "string",
+          "value": "2x improvement in efficiency"
+        },
+        "f2": {
+          "type": "date",
+          "value": "06/25/2015"
+        },
+        "ordinal": 10,
+        "sheetId": "$_ObjectId_4",
+        "shortId": 1
+      },
+      {
+        "_id": "$_ObjectId_28",
+        "clientName": {
+          "type": "string",
+          "value": "Project Yosemite"
+        },
+        "f0": {
+          "type": "string",
+          "value": "Project Yosemite"
+        },
+        "f1": {
+          "type": "string",
+          "value": "20% decrease in product defects"
+        },
+        "f2": {
+          "type": "date",
+          "value": "11/14/2014"
+        },
+        "ordinal": 13,
+        "sheetId": "$_ObjectId_4",
+        "shortId": 2
+      },
+      {
+        "_id": "$_ObjectId_29",
+        "f0": {
+          "type": "string",
+          "value": "Project Malibu"
+        },
+        "f1": {
+          "type": "string",
+          "value": "50% reduction in time-to-market"
+        },
+        "f2": {
+          "type": "date",
+          "value": "10/27/2015"
+        },
+        "ordinal": 17,
+        "sheetId": "$_ObjectId_4",
+        "shortId": 3
+      }
+    ],
+    [
+      {
+        "_id": "$_ObjectId_30",
+        "f0": {
+          "type": "string",
+          "value": "Paul Jacobs"
+        },
+        "f1": {
+          "type": "string",
+          "value": "Group Manager"
+        },
+        "f2": {
+          "type": "string",
+          "value": "573-356-3327"
+        },
+        "ordinal": 5,
+        "sheetId": "$_ObjectId_7",
+        "shortId": 1
+      },
+      {
+        "_id": "$_ObjectId_31",
+        "f0": {
+          "type": "string",
+          "value": "Alan Walters"
+        },
+        "f1": {
+          "type": "string",
+          "value": "Sales Manager"
+        },
+        "f2": {
+          "type": "string",
+          "value": "520-742-9705"
+        },
+        "ordinal": 6,
+        "sheetId": "$_ObjectId_7",
+        "shortId": 2
+      },
+      {
+        "_id": "$_ObjectId_32",
+        "f0": {
+          "type": "string",
+          "value": "Stephanie Ray"
+        },
+        "f1": {
+          "type": "string",
+          "value": "Analyst"
+        },
+        "f2": {
+          "type": "string",
+          "value": "304-349-8676"
+        },
+        "ordinal": 8,
+        "sheetId": "$_ObjectId_7",
+        "shortId": 3
+      },
+      {
+        "_id": "$_ObjectId_33",
+        "f0": {
+          "type": "string",
+          "value": "Sara Carlson"
+        },
+        "f1": {
+          "type": "string",
+          "value": "Project Manager"
+        },
+        "f2": {
+          "type": "string",
+          "value": "763-931-8268"
+        },
+        "ordinal": 9,
+        "sheetId": "$_ObjectId_7",
+        "shortId": 4
+      },
+      {
+        "_id": "$_ObjectId_34",
+        "f0": {
+          "type": "string",
+          "value": "Joyce Greer"
+        },
+        "f1": {
+          "type": "string",
+          "value": "Program Manager"
+        },
+        "f2": {
+          "type": "string",
+          "value": "454-216-6957"
+        },
+        "ordinal": 10,
+        "sheetId": "$_ObjectId_7",
+        "shortId": 5
+      }
+    ]
+  ],
+  "symrefSets": [
+    [
+      {
+        "_id": "$_ObjectId_35",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_27",
+          "name": "Project Cobalt",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_12",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_36",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_27",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_14",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_37",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_27",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_13",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_38",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_27",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_15",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_39",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_27",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_16",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_40",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_28",
+          "name": "Project Quartz",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_17",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_41",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_28",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_18",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_42",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_28",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_19",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_43",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_28",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_20",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_44",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_28",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_21",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_45",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_29",
+          "name": "Project Malibu",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_22",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_46",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_29",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_23",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_47",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_29",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_24",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_48",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_29",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_25",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_49",
+        "joinId": "$_ObjectId_3",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_29",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_26",
+          "ordinal": 0
+        }
+      }
+    ],
+    [
+      {
+        "_id": "$_ObjectId_50",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_23",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_31",
+          "name": "Alan Walters",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_51",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_25",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_33",
+          "name": "Sara Carlson",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_52",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_16",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_32",
+          "name": "Stephanie Ray",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_53",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_13",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_34",
+          "name": "Joyce Greer",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_54",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_19",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_33",
+          "name": "Sara Carlson",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_55",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_20",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_34",
+          "name": "Joyce Greer",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_56",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_14",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_30",
+          "name": "Paul Jacobs",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_57",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_24",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_32",
+          "name": "Stephanie Ray",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_58",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_15",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_32",
+          "name": "Stephanie Ray",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_59",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_12",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_33",
+          "name": "Sara Carlson",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_60",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_22",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_34",
+          "name": "Joyce Greer",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_61",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_17",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_31",
+          "name": "Alan Walters",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_62",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_21",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_30",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_63",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_18",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_32",
+          "name": "Stephanie Ray",
+          "ordinal": 0
+        }
+      },
+      {
+        "_id": "$_ObjectId_64",
+        "joinId": "$_ObjectId_6",
+        "hasDeletedRecord": false,
+        "right": {
+          "_id": "$_ObjectId_26",
+          "ordinal": 0
+        },
+        "left": {
+          "_id": "$_ObjectId_31",
+          "ordinal": 0
+        }
+      }
+    ]
+  ]
+}

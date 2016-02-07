@@ -4,7 +4,7 @@
   "description": "A simple node client for Fieldbook.com's API",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "foreman run -e .env ./node_modules/.bin/mocha --recursive"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/fieldbook/fieldbook-client/issues"
   },
-  "homepage": "https://github.com/fieldbook/fieldbook-client#readme"
+  "homepage": "https://github.com/fieldbook/fieldbook-client#readme",
+  "dependencies": {
+    "requestify": "^0.1.17"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
+    "lodash": "^4.2.1",
+    "mocha": "^2.4.5"
+  }
 }
