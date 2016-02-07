@@ -10,13 +10,18 @@ var Client = module.exports = function (options) {
 
 _.extend(Client.prototype, {
   initialize: function (options) {
-    if (!options.key || !options.secret || !options.bookId) {
+    if (!options.key || !options.secret || (!options.bookId && !options.url)) {
       throw new Error('Must supply all of key, secret, and bookId.')
     }
 
     this.key = options.key;
     this.secret = options.secret;
-    this.baseUrl = BASE_FIELDBOOK_URL + '/' + options.bookId + '/';
+
+    if (options.url) {
+      this.baseUrl = options.url;
+    } else {
+      this.baseUrl = BASE_FIELDBOOK_URL + '/' + options.bookId + '/';
+    }
   },
 
   request: function (path, options) {
