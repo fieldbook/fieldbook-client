@@ -1,5 +1,6 @@
 var url = require('url');
 var requestify = require('requestify');
+var _ = require('lodash');
 
 var BASE_FIELDBOOK_URL = 'https://api.fieldbook.com/v1';
 

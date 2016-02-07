@@ -1,3 +1,4 @@
+1.0.3 - Fix bad remove of lodash
 1.0.2 - Allow passing url directly
 1.0.1 - Update readme for npmjs.com, add this file
 1.0.0 - Initial version
