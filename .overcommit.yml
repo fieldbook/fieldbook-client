@@ -41,9 +41,6 @@ CommitMsg:
     max_subject_width: 51 # This should be 50, but comparison is incorrect, so we need to say 51
 
 PreCommit:
-  CssLint:
-    enabled: false
-
   JsonSyntax:
     enabled: true
 
