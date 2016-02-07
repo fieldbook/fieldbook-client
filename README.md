@@ -67,6 +67,32 @@ client.destroy('people', 3)
 
 Deletes the specified record from the sheet.
 
+#### client.createWebhook(URL, ACTIONS)
+
+```javascript
+client.createWebhook('https://example.com/my-webhook', ['create', 'update', 'destroy'])
+```
+
+Creates a webhook at the specified endpoint.  Only current valid actions are `create`, `update`, and `destroy`. See the [webhook documentation](https://github.com/fieldbook/api-docs/blob/master/reference.md#webhooks) for more information.
+
+#### client.listWebhooks()
+
+```javascript
+client.listWebhooks()
+```
+
+Lists all the webhooks with their subscribed actions that are currently on the book.
+
+#### client.destroyWebhook(ID)
+
+```
+client.listWebhooks().then(function (webhooks) {
+  return client.destroyWebhook(webhooks[0].id)
+})
+```
+
+Remove a webhook from the book.
+
 ## To Run Tests
 
 First install foreman, if you don't have it. `gem install foreman`
