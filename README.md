@@ -2,6 +2,12 @@
 
 A node client for http://fieldbook.com
 
+## Installing
+
+```sh
+npm install fieldbook-client
+```
+
 ## Creating a client
 
 ```javascript
@@ -17,7 +23,7 @@ To get an api key, see [the getting started guide](https://github.com/fieldbook/
 
 ## API Methods
 
-All api methods will return a promise for data from the fieldbook api.  Error responses will try to give an error with a good message, and the rejected errors will have a `response` property that contains the full response for the errored request.  This api uses Q promises via requestify.
+All api methods will return a promise for data from the Fieldbook API.  Error responses will try to give an error with a good message, and the rejected errors will have a `response` property that contains the full response for the errored request.  This api uses Q promises via requestify.
 
 #### client.listSheets()
 
