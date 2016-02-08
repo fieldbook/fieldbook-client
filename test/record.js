@@ -1,7 +1,7 @@
 describe('Records', function () {
   helpers.testRequest(
     'when you get a record',
-    function () { return client.show('people', 1) },
+    function () { return client.get('people', 1) },
     function (call) {
       it('should return the record', function () {
         return expect(helpers.removeUrl(call.response)).eventually.deep.equal({
@@ -17,7 +17,7 @@ describe('Records', function () {
 
   helpers.testRequest(
     'when you get a record with options',
-    function () { return client.show('people', 1, {include: 'role', exclude: 'id,record_url'}) },
+    function () { return client.get('people', 1, {include: 'role', exclude: 'id,record_url'}) },
     function (call) {
       it('should return the record', function () {
         return expect(call.response).eventually.deep.equal({role:"Group Manager"});
@@ -94,7 +94,7 @@ describe('Records', function () {
 
   helpers.testRequest(
     'when you request a record and get an error',
-    function () { return client.show('people', 99) },
+    function () { return client.get('people', 99) },
     function (call) {
       it('should throw an error', function () {
         return expect(call.response).eventually.rejectedWith(/Record id not found/)

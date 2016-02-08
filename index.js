@@ -67,7 +67,7 @@ _.extend(Client.prototype, {
     return this.request(sheet, {method: 'GET', params: options});
   },
 
-  show: function (sheet, id, options) {
+  get: function (sheet, id, options) {
     return this.request(sheet + '/' + id, {method: 'GET', params: options});
   },
 

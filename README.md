@@ -41,10 +41,10 @@ client.list('people', {include: 'name,phone'})
 
 Return the list of records.  OPTIONS can include include/exclude, limit/offset, and filter terms.  See the [sheet api docs](https://github.com/fieldbook/api-docs/blob/master/reference.md#sheet-queries) for more information.
 
-#### client.show(SHEET_NAME, ID, OPTIONS)
+#### client.get(SHEET_NAME, ID, OPTIONS)
 
 ```javascript
-client.show('people', 2, {exclude: 'phone'})
+client.get('people', 2, {exclude: 'phone'})
 ```
 
 Return a specific record in a sheet.  OPTIONS can include include/exclude options just list list() can.
