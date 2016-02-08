@@ -1,3 +1,5 @@
+var Fieldbook = require('../index');
+
 describe('Sheets', function () {
   helpers.testRequest(
     'when you list the sheets',
@@ -53,5 +55,21 @@ describe('Sheets', function () {
         })
       }
     )
+  })
+
+  describe('when you have an error without a message', function () {
+    var badClient, response;
+    before(function () {
+      var options = _.clone(client.options);
+      options.bookId = 'not-a-id',
+      badClient = new Fieldbook(options);
+
+      response = badClient.list('people');
+      return response.fail(function (err) {}) // Swallow errrors so tests don't stop
+    })
+
+    it('should return an error', function () {
+      return expect(response).eventually.rejectedWith(/400 on.*invalid id/);
+    })
   })
 })

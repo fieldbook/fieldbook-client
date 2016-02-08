@@ -43,11 +43,11 @@ _.extend(Client.prototype, {
     }).fail(function (response) {
       if (response instanceof Error) throw response;
 
-      var message = 'Unknown error: ' + (response.body || '');
+      var message = 'Bad response: ' + response.code + ' on ' + requestUrl;
       if (response.headers['content-type'] === 'application/json') {
         try {
           var data = JSON.parse(response.body);
-          if (data && data.message) message = data.message
+          if (data && data.message) message = message + ' details: ' + data.message
         } catch (e) {
           // Do nothing
         }
