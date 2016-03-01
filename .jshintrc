@@ -32,6 +32,6 @@
     "after": true,
     "describe": true,
     "it": true,
-    "Q": false
+    "Q": true
   }
 }

@@ -15,6 +15,10 @@ global.client = new Fieldbook({
 
 global.helpers = {};
 
+var isPromise = function (val) {
+  return val && typeof val.then === 'function'
+}
+
 helpers.testRequest = function (name, createRequest, testFn) {
   describe(name, function () {
     var call = {};
@@ -30,7 +34,7 @@ helpers.testRequest = function (name, createRequest, testFn) {
 }
 
 helpers.removeUrl = function (record) {
-  if (Q.isPromise(record)) {
+  if (isPromise(record)) {
     return record.then(helpers.removeUrl);
   }
 
@@ -38,7 +42,7 @@ helpers.removeUrl = function (record) {
 }
 
 helpers.removeUrls = function (records) {
-  if (Q.isPromise(records)) {
+  if (isPromise(records)) {
     return records.then(helpers.removeUrls);
   }
 

@@ -68,6 +68,24 @@ describe('Records', function () {
         )
 
         helpers.testRequest(
+          'when you update a record with unicode characters',
+          function () { return client.update('people', id, {role: 'مهندس'}) },
+          function (call) {
+            it('should return the modified record', function () {
+              var response = call.response.then(function (data) {
+                return _.omit(data, 'id', 'record_url', 'phone');
+              })
+
+              return expect(response).eventually.deep.equal({
+                name: 'Ben B',
+                role: 'مهندس',
+                tasks: []
+              });
+            })
+          }
+        )
+
+        helpers.testRequest(
           'when you delete a record',
           function () {
             needsDelete = false;

@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/fieldbook/fieldbook-client#readme",
   "dependencies": {
-    "requestify": "^0.1.17"
+    "q": "^1.4.1",
+    "superagent": "^1.7.2",
+    "superagent-promise-plugin": "^2.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
