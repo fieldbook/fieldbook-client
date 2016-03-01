@@ -1,5 +1,6 @@
 Version 1.0 should be considered alpha, subject to change
 
+1.0.5 - Change to superagent, for unicode compatibility
 1.0.4 - Change show to get, update documentation, Better errors
 1.0.3 - Fix bad remove of lodash
 1.0.2 - Allow passing url directly
