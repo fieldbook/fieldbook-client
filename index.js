@@ -1,6 +1,10 @@
 var url = require('url');
-var requestify = require('requestify');
+var superagent = require('superagent');
+var promisePlugin = require('superagent-promise-plugin');
+var Q = require('q');
 var _ = require('lodash');
+
+promisePlugin.Promise = Q.Promise;
 
 var BASE_FIELDBOOK_URL = 'https://api.fieldbook.com/v1';
 
@@ -26,7 +30,7 @@ _.extend(Client.prototype, {
   },
 
   request: function (path, options) {
-    options.headers = {accept: 'application/json'};
+    options.headers = {Accept: 'application/json'};
     options.auth = {username: this.key, password: this.secret};
 
     var requestUrl = url.resolve(this.baseUrl, path);
@@ -34,27 +38,35 @@ _.extend(Client.prototype, {
     // Remove trailing / if this is the listSheets request
     if (path === '') requestUrl = requestUrl.slice(0, -1);
 
-    return requestify.request(requestUrl, options).then(function (response) {
-      if (response.body) {
-        return JSON.parse(response.body);
-      } else {
-        return 'ok';
-      }
-    }).fail(function (response) {
-      if (response instanceof Error) throw response;
+    var request = superagent(options.method, requestUrl)
+      .use(promisePlugin)
+      .auth(this.key, this.secret)
+      .accept('application/json');
 
-      var message = 'Bad response: ' + response.code + ' on ' + requestUrl;
-      if (response.headers['content-type'] === 'application/json') {
-        try {
-          var data = JSON.parse(response.body);
-          if (data && data.message) message = message + ' details: ' + data.message
-        } catch (e) {
-          // Do nothing
+    if (options.params) request = request.query(options.params);
+    if (options.body) request = request.send(options.body);
+
+    return request.end().then(function (response) {
+      if (response.status === 204) return 'ok'; // no content
+      return response.body;
+    }).fail(function (err) {
+      var response = err.response;
+      if (response) {
+        var message = 'Bad response: ' + response.status + ' on ' + requestUrl;
+        if (response.headers['content-type'] === 'application/json') {
+          try {
+            var data = response.body;
+            if (data && data.message) message = message + ' details: ' + data.message
+          } catch (e) {
+            // Do nothing (use the default "Bad response:..." message format)
+          }
         }
+
+        err = new Error(message);
+        err.response = response;
+        throw err;
       }
 
-      var err = new Error(message);
-      err.response = response;
       throw err;
     });
   },
