@@ -1,6 +1,6 @@
 # fieldbook-client
 
-A node client for http://fieldbook.com
+Official Node client for [Fieldbook](http://fieldbook.com)
 
 ## Installing
 
@@ -19,11 +19,11 @@ var client = new Fieldbook({
 })
 ```
 
-To get an api key, see [the getting started guide](https://github.com/fieldbook/api-docs/blob/master/quick-start.md).
+To get an API key, see [the getting started guide](https://github.com/fieldbook/api-docs/blob/master/quick-start.md).
 
 ## API Methods
 
-All api methods will return a promise for data from the Fieldbook API.  Error responses will try to give an error with a good message, and the rejected errors will have a `response` property that contains the full response for the errored request.  This api uses Q promises via requestify.
+All API methods will return a promise for data from the Fieldbook API.  Error responses will try to give an error with a good message, and the rejected errors will have a `response` property that contains the full response for the errored request.  This API uses Q promises via `requestify`.
 
 #### client.listSheets()
 
@@ -39,7 +39,7 @@ Returns the list of sheet names on the book.
 client.list('people', {include: 'name,phone'})
 ```
 
-Return the list of records.  OPTIONS can include include/exclude, limit/offset, and filter terms.  See the [sheet api docs](https://github.com/fieldbook/api-docs/blob/master/reference.md#sheet-queries) for more information.
+Return the list of records.  OPTIONS can include: include/exclude, limit/offset, and filter terms.  See the [sheet API docs](https://github.com/fieldbook/api-docs/blob/master/reference.md#sheet-queries) for more information.
 
 #### client.get(SHEET_NAME, ID, OPTIONS)
 
@@ -47,7 +47,7 @@ Return the list of records.  OPTIONS can include include/exclude, limit/offset, 
 client.get('people', 2, {exclude: 'phone'})
 ```
 
-Return a specific record in a sheet.  OPTIONS can include include/exclude options just list list() can.
+Return a specific record in a sheet.  OPTIONS can include include/exclude options just as list() can.
 
 #### client.create(SHEET_NAME, ATTRIBUTES)
 
@@ -99,18 +99,19 @@ client.listWebhooks().then(function (webhooks) {
 
 Remove a webhook from the book.
 
-## To Run Tests
+## Running tests
 
 First install foreman, if you don't have it. `gem install foreman`
 
 Take the `test/apiTestBook.json` file and drag it onto the book list, this will
 create a book
 
-On that book, create an api key, and then populate a .env file with this variables:
+On that book, create an API key, and then populate a .env file with this variables:
 
 ```bash
 TEST_BOOK_ID='<BOOK_ID_HERE>'
 TEST_KEY='<API_KEY_NAME>'
 TEST_KEY_SECRET='<API_SECRET>'
 ```
+
 Then just run `npm test`.
