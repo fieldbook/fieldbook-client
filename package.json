@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/fieldbook/fieldbook-client#readme",
   "dependencies": {
+    "lodash": "^4.2.1",
     "q": "^1.4.1",
     "superagent": "^1.7.2",
     "superagent-promise-plugin": "^2.1.0"
@@ -28,7 +29,6 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^5.2.0",
-    "lodash": "^4.2.1",
     "mocha": "^2.4.5"
   }
 }
