@@ -4,7 +4,7 @@
   "description": "A simple node client for Fieldbook.com's API",
   "main": "index.js",
   "scripts": {
-    "test": "foreman run -e .env ./node_modules/.bin/mocha --recursive"
+    "test": "./node_modules/.bin/mocha --recursive"
   },
   "repository": {
     "type": "git",
