@@ -46,7 +46,7 @@ _.extend(Client.prototype, {
     if (options.params) request = request.query(options.params);
     if (options.body) request = request.send(options.body);
 
-    return request.end().then(function (response) {
+    return request.then(function (response) {
       if (response.status === 204) return 'ok'; // no content
       return response.body;
     }).fail(function (err) {
