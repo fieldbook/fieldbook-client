@@ -1,4 +1,4 @@
-global.Q = require('Q');
+global.Q = require('q');
 global._ = require('lodash');
 
 global.chai = require('chai');
